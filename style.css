@@ -81,7 +81,6 @@ header i {
   background-image: url("images/graphic.svg");
   background-size: cover;
   background-color: #FFFFFF;
-  position: relative;
 }
 
 .upsell {
@@ -241,4 +240,31 @@ header i {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+}
+
+.divider {
+  width: 100%;
+  height: 2px;
+  background-color: #eeeeee;
+}
+
+.hero-2 {
+  width: 100%;
+  height: 630px;
+  margin: 0px 2rem;
+  padding-top: 1rem;
+  display: flex;
+}
+.hero-2 .launching h1 {
+  font-size: 3.5rem;
+  line-height: 67.77px;
+  margin: 24px 0;
+}
+.hero-2 .girl {
+  width: 206px;
+  height: 467px;
+  background-image: url("images/upsell-footer-image.svg");
+  background-size: cover;
+  background-color: #FFFFFF;
+  margin-top: 148px;
 }/*# sourceMappingURL=style.css.map */
