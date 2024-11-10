@@ -62,7 +62,7 @@ $Light-Orange: #fff0e8;
     margin: 0;
 }
 
-@mixin heading-2 {
+@mixin heading {
     font-weight: 500;
     font-size: 40px;
     line-height: 48.41px;
@@ -79,12 +79,12 @@ $Light-Orange: #fff0e8;
 
 body {
     min-width: 428px;
-    max-width: 1320px;
+    max-width: 1440px;
     margin: auto;
     width: 100%;
     border-radius: 1rem;
     box-shadow: 0px 2px 7px 3px #0000001F;
-    background: $Light-1;
+    background: $Light-2;
 }
 
 header {
@@ -92,15 +92,26 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: $Light-1;
     
+    nav {
+        display: none;
+    }
+
     i {
         font-size: 1.6rem;
         color: $Dark-4;
     }
 }
 
+main {
+    background-color: $Light-1;
+    position: relative;
+    z-index: 0;
+}
+
 .hero {
-    margin: 10px 0;
+    padding: 10px 0;
     margin-left: 2rem;
     display: flex;
     justify-content: space-between;
@@ -116,7 +127,7 @@ header {
         font-weight: 700;
         font-size: 1rem;
         line-height: 19.36px;
-        letter-spacing: 10%;
+        letter-spacing: 1.7px;
         margin: 0;
     }
 
@@ -152,16 +163,17 @@ header {
             font-size: 20px;
             line-height: 30px;
             text-align: center;
+            z-index: 5;
         }
     }
 
     .gradient-border::before {
         content: "";
         position: absolute;
-        top: -2px;
-        left: -2px;
-        right: -2px;
-        bottom: -2px;
+        top: -4px;
+        left: -4px;
+        right: -4px;
+        bottom: -4px;
         border-radius: 3rem;
         background: linear-gradient(45deg, $Pink, $Green);
         z-index: -1;
@@ -185,7 +197,7 @@ header {
     padding: 2rem;
 
     h2 {
-        @include heading-2;
+        @include heading;
         margin-top: 5.5rem;
     }
 
@@ -207,8 +219,12 @@ header {
         height: 2rem;
     }
     
-    img:nth-of-type(even) {
+    img:nth-of-type(2), img:nth-of-type(5) {
         justify-self: end;
+    }
+
+    img:nth-of-type(4) {
+        display: none;
     }
 }
     
@@ -220,15 +236,17 @@ header {
         padding: 2rem;
 
         h2 {
-            @include heading-2;
+            @include heading;
         }
     
         p {
             @include paragraph();
             margin-top: 1rem;
+            color: $Dark-2;
 
             span {
                 text-decoration: underline;
+                font-weight: 500;
             }
         }
     }
@@ -238,71 +256,72 @@ header {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-}
 
-.card {
-    width: 290px;
-    margin-left: 2rem;
-    margin-bottom: 2rem;
-    display: flex;
-    flex-direction: column;
-
-    img {
+    .card {
         width: 290px;
-        height: 278px;
-    }
-
-    .text {
-        width: 290px;
-        padding: 24px;
-        background-color: $Light-2;
-        border-radius: 0 0 1rem 1rem;
+        margin-left: 2rem;
+        margin-bottom: 2rem;
         display: flex;
-        justify-content: space-between;
-
-        .first {
-            @include group-1();
-
-            p:nth-of-type(1) {
-                @include paragraph-1();
-                color: $Orange;
-            }
-
-            p:nth-of-type(2) {
-                @include paragraph-2();
-            }
-
-            p:nth-of-type(3) {
-                @include paragraph-3();
-            }
+        flex-direction: column;
+    
+        img {
+            width: 290px;
+            height: 278px;
         }
-
-        .second {
-            @include group-1();
-
-            p:nth-of-type(1) {
-                @include paragraph-1();
-                justify-content: flex-end;
-                color: $Dark-3;
-            }
-
-            p:nth-of-type(2) {
-                @include paragraph-2();
-                justify-content: flex-end;
-
-                &::before {
-                    content: url(images/eth.svg) ;
-                    margin-right: 0.6rem;
+    
+        .text {
+            width: 290px;
+            padding: 24px;
+            background-color: $Light-2;
+            border-radius: 0 0 1rem 1rem;
+            display: flex;
+            justify-content: space-between;
+    
+            .first {
+                @include group-1();
+    
+                p:nth-of-type(1) {
+                    @include paragraph-1();
+                    color: $Orange;
+                }
+    
+                p:nth-of-type(2) {
+                    @include paragraph-2();
+                }
+    
+                p:nth-of-type(3) {
+                    @include paragraph-3();
                 }
             }
-
-            p:nth-of-type(3) {
-                @include paragraph-3();
-                justify-content: flex-end;
+    
+            .second {
+                @include group-1();
+    
+                p:nth-of-type(1) {
+                    @include paragraph-1();
+                    justify-content: flex-end;
+                    color: $Dark-3;
+                }
+    
+                p:nth-of-type(2) {
+                    @include paragraph-2();
+                    justify-content: flex-end;
+    
+                    &::before {
+                        content: url(images/eth.svg) ;
+                        margin-right: 0.6rem;
+                    }
+                }
+    
+                p:nth-of-type(3) {
+                    @include paragraph-3();
+                    justify-content: flex-end;
+                }
             }
         }
     }
 }
+
 
 .divider {
     width: 100%;
@@ -338,6 +357,7 @@ header {
 
 footer {
     padding: 4rem 0 0 2rem;
+    background-color: $Light-1;
 
     p {
         @include paragraph-4();
@@ -362,7 +382,7 @@ footer {
                 font-weight: 700;
                 font-size: 1rem;
                 line-height: 19.36px;
-                letter-spacing: 2px;
+                letter-spacing: 1.7px;
                 color: $Dark-2;
                 text-align: left;
             }
@@ -396,15 +416,195 @@ footer {
 
 
     }
-    
-    .copy {
-        @include paragraph-4();
-        color: $Dark-4;
-        padding: 3rem 0 5rem 0;
+
+    .launching-1 {
+
+        .copy {
+            @include paragraph-4();
+            color: $Dark-4;
+            padding: 3rem 0 5rem 0;
+        }
+
+        .august {
+            @include paragraph-4();
+            display: none;
+        }
     }
+    
 }
 
+@media screen and (min-width: 1200px) {
+    header {
+        padding: 4.5rem 5rem;
 
+        .fa-solid {
+            display: none;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            
+            a {
+                text-decoration: none;
+                @include paragraph-4();
+                color: $Dark-2;
+            }
+        }
+        background-color: $Light-1;
+    }
+    
+    main {
+        .hero {
+            padding: 7rem 5rem;
+    
+            .launching {
+                margin-top: 1rem;
+                max-width: 520px;
+                
+                h1 {
+                    font-size: 6rem;
+                    line-height: 116.18px;
+                    width: 100%;
+                    margin-bottom: 2rem;
+                }
+    
+                .gradient-border {
+                    margin-top: 2.5rem;
+                }
+            }
+    
+            .graphic {
+                width: 500px;
+                height: 519px;
+                background-position: center;
+            }
+        }
+    
+        .upsell {
+            margin: 0;
+            max-width: 1280px;
+            margin: auto;
+            border-radius: 1rem;
+        }
+    
+        .press {
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+            margin-top: 120px;
+            padding: 0 5rem;
+    
+            img:nth-of-type(2),
+            img:nth-of-type(3),
+            img:nth-of-type(4) {
+                justify-self: center;
+            }
+    
+            img:nth-of-type(4) {
+                display: block;
+            }      
+        }
+    
+        .super {
+    
+            .box {
+                padding: 7.5rem 5rem 0 5rem;
+    
+                p {
+                    margin-top: 24px;
+                    margin-bottom: 3.5rem;
+                }
+            }
+    
+            .group {
+                display: flex;
+                justify-content: space-between;
+                padding: 0 5rem;
+    
+                .card {
+                    margin: 0;
+                }
+            }
+        }
+
+        .divider {
+            margin: 4.5rem 0;
+            padding: 0 5rem;
+        }
+
+        .hero-2 {
+            margin: 0;
+            position: relative;
+
+            .launching {
+                max-width: 651px;
+                margin-top: 2rem;
+                padding-left: 5rem;
+            }
+
+            .girl {
+                margin: 0;
+                position: absolute;
+                right: 20%;
+            }
+        }
+
+        .divider {
+            margin: 0;
+            margin-top: 53px;
+        }
+    }
+
+    footer {
+        padding: 7.5rem 5rem 4rem 5rem;
+
+        .box-1 {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .right {
+            display: flex;
+
+            .table-1 {
+                th {
+                    padding: 0rem 6rem 1rem 0;
+                }
+    
+                td {
+                    padding: 0;
+                }
+            }
+            
+            .table-2 {
+                th {
+                    padding: 0rem 3rem 0rem 0;
+                }
+    
+                td {
+                    padding: 0;
+                    // line-height: 1px;
+                }
+            }
+        }
+
+        .launching-1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 5rem;
+    
+            .august, .copy {
+                
+                display: flex;
+                padding: 0;   
+            }
+        }
+    }
+
+
+}
 
 
 
