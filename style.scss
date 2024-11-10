@@ -14,6 +14,7 @@ $Orange: #ff8139;
 $Pink: #ff3998;
 $Green: #39ffa0;
 $Red: #ff3939;
+$Green: #ceb371;
 $Light-Green: #edfff6;
 $Light-Orange: #fff0e8;
 
@@ -54,6 +55,13 @@ $Light-Orange: #fff0e8;
     align-items: center;   
 }
 
+@mixin paragraph-4 {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    margin: 0;
+}
+
 @mixin heading-2 {
     font-weight: 500;
     font-size: 40px;
@@ -69,16 +77,14 @@ $Light-Orange: #fff0e8;
     gap: 1rem;
 }
 
-
-
-
 body {
     min-width: 428px;
+    max-width: 1320px;
     margin: auto;
+    width: 100%;
     border-radius: 1rem;
-    box-shadow: 0px 4px 16px 0px #0000001F;
+    box-shadow: 0px 2px 7px 3px #0000001F;
     background: $Light-1;
-
 }
 
 header {
@@ -88,22 +94,20 @@ header {
     align-items: center;
     
     i {
-        
         font-size: 1.6rem;
         color: $Dark-4;
     }
 }
 
 .hero {
-    width: 100%;
-    height: 448px;
-    margin: 10px 2rem;
+    margin: 10px 0;
+    margin-left: 2rem;
     display: flex;
+    justify-content: space-between;
 }
 
 .launching {
-    width: 274px;
-    height: 410px;
+    max-width: 274px;
     margin-top: 148px - 110px;
 
     h3 {
@@ -129,15 +133,17 @@ header {
         @include paragraph();
     }
 
-    button {
+    .gradient-border {
         background-color: $Light-1;
         width: 188px;
         height: 75px;
         margin-top: 2rem;
+        margin-bottom: 5rem;
         padding: 0;
         border-radius: 3rem;
-        border: 4px solid $Red;
-        // border: 4px solid #000000
+        border: 4px solid transparent;
+        background-clip: padding-box;
+        position: relative;
 
         p {
             color: $Dark-1;
@@ -148,19 +154,30 @@ header {
             text-align: center;
         }
     }
+
+    .gradient-border::before {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        border-radius: 3rem;
+        background: linear-gradient(45deg, $Pink, $Green);
+        z-index: -1;
+    }
 }
 
 .graphic {  
-    width: 175.69px;
+    width: 289.62px;
     height: 278px;
     background-image: url("images/graphic.svg");
+    background-position: left;
     background-size: cover;
-    background-color: $Light-1;
 }
 
 .upsell {
     width: 100%;
-    height: 326px;
     background-image: url("images/background.svg");
     background-position: 80%;
     background-size: cover;
@@ -183,12 +200,18 @@ header {
     padding: 0 2rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.8rem 4.6rem;
-
+    gap: 1.8rem 0;
+    align-items: center;
+    
     img {
         height: 2rem;
     }
+    
+    img:nth-of-type(even) {
+        justify-self: end;
+    }
 }
+    
 
 .super {
     padding-bottom: 3rem;
@@ -214,11 +237,13 @@ header {
 .group {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .card {
     width: 290px;
-    margin: 0 2rem;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
     display: flex;
     flex-direction: column;
 
@@ -286,11 +311,10 @@ header {
 }
 
 .hero-2 {
-    width: 100%;
-    height: 630px;
-    margin: 0px 2rem;
+    margin-left: 2rem;
     padding-top: 1rem;
     display: flex;
+    justify-content: space-between;
 
     .launching {
 
@@ -306,10 +330,83 @@ header {
         height: 467px;
         background-image: url("images/upsell-footer-image.svg");
         background-size: cover;
+        background-position: left;
         background-color: $Light-1;
         margin-top: 148px;
     }
 }
+
+footer {
+    padding: 4rem 0 0 2rem;
+
+    p {
+        @include paragraph-4();
+        color: $Dark-2;
+        margin: 2rem 0;
+    }
+
+    .social-1 {
+        font-size: 18px;
+        color: $Dark-4;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .right {
+
+        table {    
+            
+            th {
+                text-transform: uppercase;
+                font-weight: 700;
+                font-size: 1rem;
+                line-height: 19.36px;
+                letter-spacing: 2px;
+                color: $Dark-2;
+                text-align: left;
+            }
+        
+            td {
+                @include paragraph-4();
+                color: $Dark-2;
+                text-align: left;
+            }
+        }
+
+        .table-1 {
+            th {
+                padding: 4rem 7.2rem 1rem 0;
+            }
+
+            td {
+                padding: 0.5rem 0;
+            }
+        }
+        
+        .table-2 {
+            th {
+                padding: 3rem 6rem 1rem 0;
+            }
+
+            td {
+                padding: 0.5rem 0;
+            }
+        }
+
+
+    }
+    
+    .copy {
+        @include paragraph-4();
+        color: $Dark-4;
+        padding: 3rem 0 5rem 0;
+    }
+}
+
+
+
+
 
 
 
