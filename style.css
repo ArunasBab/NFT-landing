@@ -3,6 +3,10 @@
   font-family: "Inter", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   min-width: 428px;
   max-width: 1440px;
@@ -79,6 +83,7 @@ main {
   border: 4px solid transparent;
   background-clip: padding-box;
   position: relative;
+  transition: 0.1s;
 }
 .launching .gradient-border p {
   color: #111111;
@@ -87,7 +92,13 @@ main {
   font-size: 20px;
   line-height: 30px;
   text-align: center;
-  z-index: 5;
+  transition: 0.2s;
+}
+.launching .gradient-border:hover {
+  opacity: 0.9;
+}
+.launching .gradient-border:hover p {
+  color: #FFFFFF;
 }
 .launching .gradient-border::before {
   content: "";
@@ -107,9 +118,14 @@ main {
   background-image: url("images/graphic.svg");
   background-position: left;
   background-size: cover;
+  transition: 1s;
 }
 
-.upsell {
+.graphic:hover {
+  transform: rotate(360deg);
+}
+
+.up-sell {
   width: 100%;
   background-image: url("images/background.svg");
   background-position: 80%;
@@ -117,7 +133,7 @@ main {
   margin-top: 70px;
   padding: 2rem;
 }
-.upsell h2 {
+.up-sell h2 {
   font-weight: 500;
   font-size: 40px;
   line-height: 48.41px;
@@ -125,7 +141,7 @@ main {
   margin: 0;
   margin-top: 5.5rem;
 }
-.upsell p {
+.up-sell p {
   font-weight: 400;
   font-size: 20px;
   line-height: 30px;
@@ -200,6 +216,7 @@ main {
   border-radius: 0 0 1rem 1rem;
   display: flex;
   justify-content: space-between;
+  transition: 0.3s;
 }
 .group .card .text .first {
   padding: 0;
@@ -276,6 +293,9 @@ main {
   align-items: center;
   justify-content: flex-end;
 }
+.group .card .text:hover {
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
 
 .divider {
   width: 100%;
@@ -317,11 +337,17 @@ footer p {
   margin: 2rem 0;
 }
 footer .social-1 {
+  display: flex;
+  gap: 1rem;
+}
+footer .social-1 a {
+  text-decoration: none;
   font-size: 18px;
   color: #999999;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  transition: 0.3s;
+}
+footer .social-1 a:hover {
+  transform: scale(1.3);
 }
 footer .right table th {
   text-transform: uppercase;
@@ -332,13 +358,17 @@ footer .right table th {
   color: #555555;
   text-align: left;
 }
-footer .right table td {
+footer .right table a {
+  text-decoration: none;
   font-weight: 400;
   font-size: 20px;
   line-height: 20px;
   margin: 0;
   color: #555555;
   text-align: left;
+}
+footer .right table a:hover {
+  text-decoration: underline;
 }
 footer .right .table-1 th {
   padding: 4rem 7.2rem 1rem 0;
@@ -368,11 +398,7 @@ footer .launching-1 .august {
   display: none;
 }
 
-@media screen and (min-width: 1200px) {
-  header {
-    padding: 4.5rem 5rem;
-    background-color: #FFFFFF;
-  }
+@media screen and (min-width: 768px) {
   header .fa-solid {
     display: none;
   }
@@ -388,6 +414,49 @@ footer .launching-1 .august {
     line-height: 20px;
     margin: 0;
     color: #555555;
+  }
+  header nav a:hover {
+    color: #ff3998;
+  }
+  .graphic {
+    width: 500px;
+    height: 450px;
+    position: relative;
+    top: 40px;
+  }
+  .press img:nth-of-type(2), .press img:nth-of-type(5) {
+    justify-self: center;
+  }
+  .left {
+    text-align: center;
+  }
+  .left .social-1 {
+    justify-content: center;
+  }
+  .right {
+    display: flex;
+    justify-content: space-around;
+  }
+  .right .table-1 th {
+    padding: 0rem 6rem 1rem 0;
+  }
+  .right .table-1 td {
+    padding: 0;
+  }
+  .right .table-2 th {
+    padding: 0rem 3rem 0rem 0;
+  }
+  .right .table-2 td {
+    padding: 0;
+  }
+  .launching-1 {
+    text-align: center;
+  }
+}
+@media screen and (min-width: 1200px) {
+  header {
+    padding: 4.5rem 5rem;
+    background-color: #FFFFFF;
   }
   main .hero {
     padding: 7rem 5rem;
@@ -410,7 +479,7 @@ footer .launching-1 .august {
     height: 519px;
     background-position: center;
   }
-  main .upsell {
+  main .up-sell {
     margin: 0;
     max-width: 1280px;
     margin: auto;
@@ -441,6 +510,7 @@ footer .launching-1 .august {
     display: flex;
     justify-content: space-between;
     padding: 0 5rem;
+    gap: 2rem 0;
   }
   main .super .group .card {
     margin: 0;
@@ -496,6 +566,7 @@ footer .launching-1 .august {
     padding-top: 5rem;
   }
   footer .launching-1 .august, footer .launching-1 .copy {
+    color: #999999;
     display: flex;
     padding: 0;
   }
